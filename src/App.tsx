@@ -1,9 +1,10 @@
 import { FlexBox } from "./styledComponents/FlexBox/FlexBox";
-import { FlexContainer } from "./styledComponents/FlexContainer/FlexContainer";
 import styles from "./App.module.css";
 import { Stack } from "@mui/material";
+import useFetchDailyDataPerCity from "./queries/useFetchDailyDataPerCity";
 
 const App = () => {
+  //  const { data } = useFetchDailyDataPerCity("");
   return (
     <FlexBox className={styles.appContainer}>
       <Stack className={styles.dailyInfoContainer}>
