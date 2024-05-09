@@ -12,6 +12,7 @@ const useAutoComplete = (searchString: string, enable?: boolean) => {
     queryFn: async () => await apis.getAutoCompleteOptions(searchString),
     staleTime: 1_000 * 60,
     enabled: enable,
+    retry: 0,
   });
 
   return {
