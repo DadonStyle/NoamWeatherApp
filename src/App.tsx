@@ -1,25 +1,19 @@
-import { FlexBox } from "./styledComponents/FlexBox/FlexBox";
-import styles from "./App.module.css";
-import { Stack } from "@mui/material";
-import useFetchDailyDataPerCity from "./queries/useFetchDailyDataPerCity";
+import useCurrentLocationData from "./queries/useCurrentLocationData";
+import Home from "./pages/Home";
 
 const App = () => {
-  //  const { data } = useFetchDailyDataPerCity("");
+  const { cityName, key, country, isLoading } = useCurrentLocationData();
+
+  if (isLoading) return <>App Loader</>;
+
   return (
-    <FlexBox className={styles.appContainer}>
-      <Stack className={styles.dailyInfoContainer}>
-        {/* search */}
-        {/* daily data */}
-        {/* city name */}
-      </Stack>
-      <Stack
-        className={styles.infoBoxesContainer}
-        bgcolor="colors.greyBackground"
-      >
-        {/* navigation button */}
-        {/* info boxes */}
-      </Stack>
-    </FlexBox>
+    <Home
+      currentLocationCity={{
+        key: key || "215854",
+        country: country || "Israel",
+        name: cityName || "Tel Aviv",
+      }}
+    />
   );
 };
 
