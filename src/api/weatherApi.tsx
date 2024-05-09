@@ -9,10 +9,8 @@ const customAxios = axios.create({
 
 const apis = {
   getDailyDataPerCity: async (cityKey: string) => {
+    if (!cityKey || cityKey?.length < 1) return [];
     try {
-      if (cityKey.length < 1) {
-        throw new Error("city key missing");
-      }
       const res = await customAxios(
         `/currentconditions/v1/${cityKey}?apikey=${
           import.meta.env.VITE_API_KEY
@@ -32,14 +30,27 @@ const apis = {
 
     try {
       const coordsObj = await getPosition();
-      const res = await axios(
-        `https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=${
+      const res = await customAxios(
+        `/locations/v1/cities/geoposition/search?apikey=${
           import.meta.env.VITE_API_KEY
         }&q=${coordsObj.coords.latitude}%2C%20%20${coordsObj.coords.longitude}`
       );
       return res.data;
     } catch (err) {
       toast.error("Couldn't get location data, please try again later");
+    }
+  },
+  getAutoCompleteOptions: async (searchString: string) => {
+    try {
+      if (!searchString || searchString.length < 1) return [];
+      const res = await customAxios(
+        `/locations/v1/cities/autocomplete?apikey=${
+          import.meta.env.VITE_API_KEY
+        }&q=${searchString}`
+      );
+      return res.data;
+    } catch (err) {
+      toast.error("AutoComplete limit reached");
     }
   },
 };
