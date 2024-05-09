@@ -1,9 +1,9 @@
 import { Stack, Typography } from "@mui/material";
 import { FC, useState } from "react";
-import { FlexBox } from "../styledComponents/FlexBox/FlexBox";
+import { FlexBox } from "../components/styledComponents/FlexBox/FlexBox";
 import Search from "../modules/Search";
 import useDailyDataPerCity from "../queries/useDailyDataPerCity";
-import { CityDetailsType } from "../types/WeatherTypes";
+import { CityDetailsType } from "../types/weatherTypes";
 import styles from "./Home.module.css";
 
 const Home: FC<{

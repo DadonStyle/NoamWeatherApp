@@ -2,7 +2,7 @@ import { Dispatch, FC, SetStateAction, useState } from "react";
 import SearchComponent from "../components/SearchComponent/SearchComponent";
 import useDebounce from "../hooks/useDebounce";
 import useAutoComplete from "../queries/useAutoComplete";
-import { CityDetailsType } from "../types/WeatherTypes";
+import { CityDetailsType } from "../types/weatherTypes";
 
 const Search: FC<{
   cityName: string;
