@@ -14,11 +14,11 @@ const Home: FC<{
   const { data, isLoading } = useDailyDataPerCity(cityDetails.key); // do not give city name back
 
   if (isLoading || !data) return <>Loading</>;
-  console.log("cityDetails", cityDetails);
+
   return (
     <FlexBox className={styles.appContainer}>
       <Stack className={styles.dailyInfoContainer}>
-        <Search cityName={""} updateData={setCityDetails} />
+        <Search cityName={cityDetails.name} updateData={setCityDetails} />
         <img
           width="200px"
           height="200px"
