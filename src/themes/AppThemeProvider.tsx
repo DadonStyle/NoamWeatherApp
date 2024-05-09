@@ -8,12 +8,37 @@ declare module "@mui/material/Button" {
   }
 }
 
+// add colors options by demand
+interface ColorOptions {
+  greyBackground?: string;
+}
+
+// enable custom colors declarations
+declare module "@mui/material/styles" {
+  interface Palette {
+    colors: Palette["primary"];
+  }
+  interface PaletteOptions {
+    colors: ColorOptions;
+  }
+}
+
 export const AppThemeProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const theme = responsiveFontSizes(
     createTheme({
-      // preferred to use the default mui platte
+      palette: {
+        primary: {
+          main: "#ffffff",
+        },
+        secondary: {
+          main: "#000000",
+        },
+        colors: {
+          greyBackground: "#efefef",
+        },
+      },
       typography: {
         h1: {},
       },
