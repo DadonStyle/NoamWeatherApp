@@ -3,13 +3,15 @@ import apis from "../api/weatherApi";
 
 const useCurrentLocationData = () => {
   const { data, isError, isLoading, refetch } = useQuery({
-    queryKey: ["dailyData"],
+    queryKey: ["currentLocation"],
     queryFn: async () => await apis.getCurrentLocationData(),
-    // refetchInterval: 300_000, // updates the data every interval
+    retry: 0,
   });
 
   return {
-    data,
+    cityName: data?.EnglishName,
+    key: data?.Key,
+    country: data?.County?.EnglishName,
     isError,
     isLoading,
     refetch,
