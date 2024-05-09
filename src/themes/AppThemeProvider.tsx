@@ -15,7 +15,6 @@ export const AppThemeProvider: React.FC<{ children: ReactNode }> = ({
     createTheme({
       // preferred to use the default mui platte
       typography: {
-        fontFamily: "Inter, sans-serif",
         h1: {},
       },
       components: {
