@@ -23,6 +23,25 @@ const apis = {
       toast.error("couldn't get city data, please try again later");
     }
   },
+  getCurrentLocationData: async () => {
+    const getPosition = (): Promise<GeolocationPosition> => {
+      return new Promise((resolve, reject) =>
+        navigator.geolocation.getCurrentPosition(resolve, reject)
+      );
+    };
+
+    try {
+      const coordsObj = await getPosition();
+      const res = await axios(
+        `https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=${
+          import.meta.env.VITE_API_KEY
+        }&q=${coordsObj.coords.latitude}%2C%20%20${coordsObj.coords.longitude}`
+      );
+      return res.data;
+    } catch (err) {
+      toast.error("Couldn't get location data, please try again later");
+    }
+  },
 };
 
 export default apis;
