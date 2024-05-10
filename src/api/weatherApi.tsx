@@ -14,7 +14,7 @@ const apis = {
       const res = await customAxios(
         `/currentconditions/v1/${cityKey}?apikey=${
           import.meta.env.VITE_API_KEY
-        }`
+        }&details=true`
       );
       if (res?.data) return res.data;
     } catch (err) {
