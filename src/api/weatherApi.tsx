@@ -21,6 +21,19 @@ const apis = {
       toast.error("couldn't get city data, please try again later");
     }
   },
+  getForecastPerCity: async (cityKey: string) => {
+    if (!cityKey || cityKey?.length < 1) return [];
+    try {
+      const res = await customAxios(
+        `/forecasts/v1/daily/5day/${cityKey}?apikey=${
+          import.meta.env.VITE_API_KEY
+        }&metric=true`
+      );
+      if (res?.data) return res.data;
+    } catch (err) {
+      toast.error("couldn't get city data, please try again later");
+    }
+  },
   getCurrentLocationData: async () => {
     const getPosition = (): Promise<GeolocationPosition> => {
       return new Promise((resolve, reject) =>
