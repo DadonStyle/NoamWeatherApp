@@ -1,7 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@500");
-
 :root {
-  font-family: "Quicksand", system-ui, Helvetica, Arial, sans-serif;
+  font-family: "Quicksand", sans-serif;
+  font-optical-sizing: auto;
   line-height: 1.5;
   font-weight: 400;
   width: 100dvw;

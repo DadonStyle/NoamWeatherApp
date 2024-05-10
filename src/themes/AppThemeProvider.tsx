@@ -16,6 +16,7 @@ declare module "@mui/material/styles/createPalette" {
     black: string;
     white: string;
     grey: string;
+    purple: string;
   }
 }
 
@@ -23,6 +24,9 @@ export const AppThemeProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   let theme = createTheme({
+    typography: {
+      fontFamily: "Quicksand",
+    },
     palette: {
       primary: {
         main: "#000000",
@@ -32,6 +36,7 @@ export const AppThemeProvider: React.FC<{ children: ReactNode }> = ({
         black: "#000000",
         white: "#ffffff",
         grey: "#efefef",
+        purple: "#748cf1",
       },
     },
   });
@@ -39,7 +44,27 @@ export const AppThemeProvider: React.FC<{ children: ReactNode }> = ({
   theme = responsiveFontSizes(
     createTheme(theme, {
       typography: {
-        h1: {},
+        h1: {
+          fontSize: "50px",
+          fontWeight: "500",
+        },
+        h2: {
+          fontSize: "40px",
+          fontWeight: "500",
+        },
+        h3: {
+          fontSize: "20px",
+          fontWeight: "500",
+        },
+        body1: {
+          // default variant
+          fontSize: "20px",
+          fontWeight: "400",
+        },
+        body2: {
+          fontSize: "40px",
+          fontWeight: "300",
+        },
       },
       components: {
         MuiButton: {
