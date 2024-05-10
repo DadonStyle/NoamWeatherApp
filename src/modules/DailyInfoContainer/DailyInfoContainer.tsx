@@ -1,22 +1,20 @@
 import { FC } from "react";
 import { Box, Theme, Typography } from "@mui/material";
-import { FlexContainer } from "../../components/StyledComponents/FlexContainer/FlexContainer";
 import { FlexBox } from "../../components/StyledComponents/FlexBox/FlexBox";
 import { getDateFromEpoch, getFormattedDateText } from "../../util/util";
 import styles from "./DailyInfoContainer.module.css";
+import WeatherImage from "../../components/WeatherImage/WeatherImage";
+import PagesLoader from "../../components/Loader/PagesLoader/PagesLoader";
 
-const DailyInfoContainer: FC<{ data: any }> = ({ data }) => {
-  if (!data) return <>LoadingInfo</>;
+const DailyInfoContainer: FC<{ data: any; isLoading: boolean }> = ({
+  data,
+  isLoading,
+}) => {
+  if (isLoading || !data) return <PagesLoader />;
 
   return (
-    <FlexContainer className={styles.dailyInfoContainer}>
-      {data?.WeatherIcon && (
-        <img
-          width="200px"
-          height="200px"
-          src={`https://www.accuweather.com/images/weathericons/${data?.WeatherIcon}.svg`}
-        />
-      )}
+    <FlexBox className={styles.dailyInfoContainer}>
+      {data?.WeatherIcon && <WeatherImage iconIndex={data.WeatherIcon} />}
       <FlexBox gap="0.2rem">
         <Typography variant="h1">{data.Temperature.Metric.Value}°</Typography>
         <Typography variant="h2">{data.Temperature.Metric.Unit}</Typography>
@@ -31,7 +29,7 @@ const DailyInfoContainer: FC<{ data: any }> = ({ data }) => {
         <Typography>{getFormattedDateText(data.EpochTime)}</Typography>
         <Typography>{data.IsDayTime ? "Day" : "Night"}</Typography>
       </FlexBox>
-    </FlexContainer>
+    </FlexBox>
   );
 };
 

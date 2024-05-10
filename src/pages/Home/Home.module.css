@@ -1,8 +1,13 @@
 .appContainer {
   width: 100dvw;
+  /* height: 100dvh; */
   padding: 0;
   align-items: flex-start;
   flex-wrap: wrap;
+  @media (max-width: 1000px) {
+    gap: 2rem;
+    height: 100%;
+  }
   .dailyInfoContainer {
     padding: 1rem;
     gap: 1rem;
