@@ -6,12 +6,14 @@ interface SearchComponentProps {
   onSelectFunc: (e: React.ChangeEvent<any>, values: string) => void;
   searchOptions: any[];
   searchString: string;
+  setSearchString: (str: string) => void;
 }
 
 const SearchComponent = ({
   onChangeFunc,
   onSelectFunc,
   searchOptions,
+  setSearchString,
   searchString,
 }: SearchComponentProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -19,19 +21,21 @@ const SearchComponent = ({
   const toggleOpen = () => setIsOpen((prev) => !prev);
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    const regex = /^[A-Za-z]+$/; // for english letters only
+    const regex = /^[A-Za-z\s]+$/; // for english letters and space only
     if (!regex.test(e.key)) {
       e.preventDefault();
     }
   };
 
   // why do i even need custom render option ?
-  // accuweather api returns cities with the same name
+  // accuweather api returns cities with the same name sometimes
   // autocomplete default key is the label which is the city name
   // than react throw "same key" error
-  // using state and custom btn to handle the issue
-  const handleOnOptionClick = (_: ChangeEvent<any>, label: string) => {
+  // custom btn to handle the issue and replace the keys used
+  // state to replace the default "selected close modal" behavior that i override
+  const handleOnOptionClick = (_: ChangeEvent<unknown>, label: string) => {
     onSelectFunc(_, label);
+    setSearchString("");
     toggleOpen();
   };
 
@@ -46,6 +50,7 @@ const SearchComponent = ({
           onClick={(_) => handleOnOptionClick(_, option?.LocalizedName)}
           variant="dropdown"
           key={option?.Key}
+          sx={{ textTransform: "capitalize", fontSize: "18px" }}
         >
           {option?.LocalizedName}
         </Button>
