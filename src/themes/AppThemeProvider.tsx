@@ -17,6 +17,8 @@ declare module "@mui/material/styles/createPalette" {
     white: string;
     grey: string;
     purple: string;
+    lightRed: string;
+    lightGreen: string;
   }
 }
 
@@ -37,6 +39,8 @@ export const AppThemeProvider: React.FC<{ children: ReactNode }> = ({
         white: "#ffffff",
         grey: "#efefef",
         purple: "#748cf1",
+        lightRed: "#faacac",
+        lightGreen: "#b0fed5",
       },
     },
   });
@@ -53,7 +57,7 @@ export const AppThemeProvider: React.FC<{ children: ReactNode }> = ({
           fontWeight: "500",
         },
         h3: {
-          fontSize: "20px",
+          fontSize: "30px",
           fontWeight: "500",
         },
         body1: {
@@ -61,36 +65,21 @@ export const AppThemeProvider: React.FC<{ children: ReactNode }> = ({
           fontSize: "20px",
           fontWeight: "400",
         },
-        body2: {
-          fontSize: "40px",
-          fontWeight: "300",
-        },
       },
       components: {
         MuiButton: {
           variants: [
             {
-              props: { variant: "secondary" },
-              style: {},
-            },
-            {
               props: { variant: "dropdown" },
               style: {
                 width: "100%",
                 height: "100%",
-                textTransform: "capitalize",
                 color: theme.palette.primary.main,
                 display: "flex",
                 justifyContent: "flex-start",
               },
             },
           ],
-          styleOverrides: {
-            root: {
-              "&:hover": {},
-              "&:disabled": {},
-            },
-          },
         },
       },
     })

@@ -8,3 +8,8 @@ export type TabType = {
   label: string;
   path: string;
 };
+
+export type outletStateInterface = {
+  cityDetails: CityDetailsType;
+  setCityDetails: (item: CityDetailsType) => void;
+};
