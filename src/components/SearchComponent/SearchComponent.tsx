@@ -1,4 +1,4 @@
-import { Autocomplete, Button, TextField } from "@mui/material";
+import { Autocomplete, Button, TextField, Theme } from "@mui/material";
 import { ChangeEvent, useState } from "react";
 
 interface SearchComponentProps {
@@ -52,7 +52,16 @@ const SearchComponent = ({
       )}
       isOptionEqualToValue={(option, value) => option.value === value.value}
       getOptionLabel={() => searchString}
-      sx={{ width: 300 }}
+      sx={{
+        width: 300,
+        "& .MuiOutlinedInput-root": {
+          borderRadius: "10px",
+        },
+        "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+          borderColor: (theme: Theme) => theme.palette.common.purple,
+          borderWidth: "2px",
+        },
+      }}
       value={searchString}
       renderInput={(params) => (
         <TextField
