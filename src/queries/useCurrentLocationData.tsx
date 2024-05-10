@@ -5,13 +5,14 @@ const useCurrentLocationData = () => {
   const { data, isError, isLoading, refetch } = useQuery({
     queryKey: ["currentLocation"],
     queryFn: async () => await apis.getCurrentLocationData(),
+    gcTime: 1_000 * 60, // location unlikely to be changed
     retry: 0,
   });
 
   return {
-    cityName: data?.EnglishName,
+    cityName: data?.LocalizedName,
     key: data?.Key,
-    country: data?.County?.EnglishName,
+    country: data?.Country?.LocalizedName,
     isError,
     isLoading,
     refetch,
