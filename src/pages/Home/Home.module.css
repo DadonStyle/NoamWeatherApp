@@ -1,0 +1,24 @@
+.appContainer {
+  width: 100dvw;
+  padding: 0;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  .dailyInfoContainer {
+    padding: 1rem;
+    gap: 1rem;
+    width: 35%;
+    align-items: center;
+    @media (max-width: 1000px) {
+      width: 100%;
+    }
+  }
+  .infoBoxesContainer {
+    padding: 1rem;
+    width: 65%;
+    height: 100%;
+    align-items: flex-start;
+    @media (max-width: 1000px) {
+      width: 100%;
+    }
+  }
+}
