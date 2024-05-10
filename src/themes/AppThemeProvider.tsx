@@ -5,40 +5,39 @@ import { ReactNode } from "react";
 declare module "@mui/material/Button" {
   interface ButtonPropsVariantOverrides {
     secondary: true;
+    dropdown: true;
   }
 }
 
-// add colors options by demand
-interface ColorOptions {
-  greyBackground?: string;
-}
-
-// enable custom colors declarations
-declare module "@mui/material/styles" {
-  interface Palette {
-    colors: Palette["primary"];
-  }
-  interface PaletteOptions {
-    colors: ColorOptions;
+// add color by demand
+import "@mui/material/styles/createPalette";
+declare module "@mui/material/styles/createPalette" {
+  interface CommonColors {
+    black: string;
+    white: string;
+    grey: string;
   }
 }
 
 export const AppThemeProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  const theme = responsiveFontSizes(
-    createTheme({
-      palette: {
-        primary: {
-          main: "#ffffff",
-        },
-        secondary: {
-          main: "#000000",
-        },
-        colors: {
-          greyBackground: "#efefef",
-        },
+  let theme = createTheme({
+    palette: {
+      primary: {
+        main: "#000000",
       },
+      secondary: { main: "#ffffff" },
+      common: {
+        black: "#000000",
+        white: "#ffffff",
+        grey: "#efefef",
+      },
+    },
+  });
+  // theme composition is necessary for the components to have access to the platte
+  theme = responsiveFontSizes(
+    createTheme(theme, {
       typography: {
         h1: {},
       },
@@ -48,6 +47,17 @@ export const AppThemeProvider: React.FC<{ children: ReactNode }> = ({
             {
               props: { variant: "secondary" },
               style: {},
+            },
+            {
+              props: { variant: "dropdown" },
+              style: {
+                width: "100%",
+                height: "100%",
+                textTransform: "capitalize",
+                color: theme.palette.primary.main,
+                display: "flex",
+                justifyContent: "flex-start",
+              },
             },
           ],
           styleOverrides: {
