@@ -6,6 +6,7 @@ const useDailyDataPerCity = (cityKey: string) => {
     queryKey: ["dailyData", cityKey],
     queryFn: async () => await apis.getDailyDataPerCity(cityKey),
     retry: 0,
+    gcTime: 1_000 * 60 * 5, // 5 minutes
     // refetchInterval: 300_000, // updates the data every interval
   });
 
