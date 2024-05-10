@@ -1,4 +1,5 @@
-import { Autocomplete, TextField, Typography } from "@mui/material";
+import { Autocomplete, Button, TextField } from "@mui/material";
+import { ChangeEvent, useState } from "react";
 
 interface SearchComponentProps {
   onChangeFunc: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -13,6 +14,10 @@ const SearchComponent = ({
   searchOptions,
   searchString,
 }: SearchComponentProps) => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const toggleOpen = () => setIsOpen((prev) => !prev);
+
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     const regex = /^[A-Za-z]+$/; // for english letters only
     if (!regex.test(e.key)) {
@@ -20,17 +25,35 @@ const SearchComponent = ({
     }
   };
 
+  // why do i even need custom render option ?
+  // accuweather api returns cities with the same name
+  // autocomplete default key is the label which is the city name
+  // than react throw "same key" error
+  // using state and custom btn to handle the issue
+  const handleOnOptionClick = (_: ChangeEvent<any>, label: string) => {
+    onSelectFunc(_, label);
+    toggleOpen();
+  };
+
   return (
     <Autocomplete
-      freeSolo
-      selectOnFocus
       options={searchOptions?.map((item) => item) || []}
+      onOpen={toggleOpen}
+      onClose={toggleOpen}
+      open={isOpen}
       renderOption={(_, option) => (
-        <Typography key={option.Key}>{option.item.LocalizedName}</Typography>
+        <Button
+          onClick={(_) => handleOnOptionClick(_, option?.LocalizedName)}
+          variant="dropdown"
+          key={option?.Key}
+        >
+          {option?.LocalizedName}
+        </Button>
       )}
+      isOptionEqualToValue={(option, value) => option.value === value.value}
+      getOptionLabel={() => searchString}
       sx={{ width: 300 }}
       value={searchString}
-      onChange={onSelectFunc}
       renderInput={(params) => (
         <TextField
           key={params.id}

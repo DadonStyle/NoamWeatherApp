@@ -25,9 +25,8 @@ const Search: FC<{
     return match;
   };
 
-  const handleOnSelectInput = (e: any, values: any) => {
+  const handleOnSelectOption = (_: unknown, values: string) => {
     if (!isSearchEnabled || !values) return setSearchString("");
-    e.stopPropagation();
     const cityData = findCityInSearchOptions(values);
     if (!cityData) return;
     const cityDetailsObj: CityDetailsType = {
@@ -35,13 +34,14 @@ const Search: FC<{
       name: cityData.LocalizedName,
       country: cityData.Country.LocalizedName,
     };
+    if (cityData?.LocalizedName) setSearchString(cityData.LocalizedName);
     updateData(cityDetailsObj);
   };
 
   return (
     <SearchComponent
       onChangeFunc={handleOnChangeInput}
-      onSelectFunc={handleOnSelectInput}
+      onSelectFunc={handleOnSelectOption}
       searchString={debouncedString}
       searchOptions={searchOptions}
     />
