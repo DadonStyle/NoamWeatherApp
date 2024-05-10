@@ -1,5 +1,5 @@
 import { FC, useState } from "react";
-import { Tab, useMediaQuery } from "@mui/material";
+import { Tab, Typography, useMediaQuery } from "@mui/material";
 import Tabs from "@mui/material/Tabs";
 import { FlexBox } from "../StyledComponents/FlexBox/FlexBox";
 import { TabType } from "../../types/types";
@@ -23,13 +23,17 @@ const TabsComponent: FC<{
         onChange={handleChange}
         variant={isCellphone ? "scrollable" : "fullWidth"}
         scrollButtons="auto"
-        aria-label="car tabs"
+        aria-label="tabs"
       >
         {data.map((obj) => (
           <Tab
             onClick={handleOnClick(obj.path)}
             key={obj.label}
-            label={obj.label}
+            label={
+              <Typography sx={{ textTransform: "capitalize" }}>
+                {obj.label}
+              </Typography>
+            }
           />
         ))}
       </Tabs>

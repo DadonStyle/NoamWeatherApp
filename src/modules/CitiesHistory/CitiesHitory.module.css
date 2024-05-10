@@ -1,0 +1,24 @@
+.citiesHistoryContainer {
+  padding: 1rem;
+  gap: 1rem;
+  width: 100%;
+  flex-wrap: wrap;
+  .citiesHistoryItem {
+    width: 100%;
+    position: relative;
+    .deleteIcon {
+      position: absolute;
+      top: 5px;
+      right: 6px;
+    }
+    .linkIcon {
+      position: absolute;
+      bottom: 5px;
+      right: 6px;
+    }
+    .iconSize {
+      width: 32px;
+      height: 32px;
+    }
+  }
+}

@@ -3,8 +3,9 @@ import { TabType } from "../../types/types";
 import { useNavigate } from "react-router";
 
 const tabsData: TabType[] = [
-  { label: "Additional Data", path: "additional" },
-  { label: "History Data", path: "history" },
+  { label: "Additional", path: "" },
+  { label: "Forecast", path: "forecast" },
+  { label: "History", path: "history" },
 ];
 
 const tabsPaths = tabsData.map((obj: TabType) => obj.path);
@@ -24,7 +25,7 @@ const Tabs = () => {
     <TabsComponent
       data={tabsData}
       handleOnClick={handleOnTabClick}
-      initialValue={initialTabIndex}
+      initialValue={initialTabIndex < 0 ? 0 : initialTabIndex}
     />
   );
 };
