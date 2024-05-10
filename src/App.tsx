@@ -1,5 +1,5 @@
 import useCurrentLocationData from "./queries/useCurrentLocationData";
-import Home from "./pages/Home";
+import Home from "./pages/Home/Home";
 
 const App = () => {
   const { cityName, key, country, isLoading } = useCurrentLocationData();
