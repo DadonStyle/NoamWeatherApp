@@ -3,4 +3,9 @@
 
 than npm i, npm run dev, and you are all set
 
+# Built using
+react, ts, mui, accuweather api
 
+## Important:
+if the server sends 503, it might be the key reaching his limit use,
+contact me and ill generate a new key for you, its quick
