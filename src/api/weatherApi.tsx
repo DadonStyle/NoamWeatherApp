@@ -50,7 +50,7 @@ const apis = {
       );
       return res.data;
     } catch (err) {
-      toast.error("Couldn't get location data, please try again later");
+      // user can choose not to accept
     }
   },
   getAutoCompleteOptions: async (searchString: string) => {
