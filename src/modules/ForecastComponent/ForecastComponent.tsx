@@ -35,7 +35,11 @@ const ForecastComponent = () => {
                   height="50px"
                 />
               }
-              bottomValue={<Typography>{forecast?.Day.IconPhrase}</Typography>}
+              bottomValue={
+                <Typography sx={{ textAlign: "left" }}>
+                  {forecast?.Day.IconPhrase}
+                </Typography>
+              }
             />
           </FlexBox>
         ))}
