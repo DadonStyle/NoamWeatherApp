@@ -5,7 +5,7 @@ import { useOutletContext } from "react-router";
 import InfoBox from "../../components/InfoBox/InfoBox";
 import { getDateFromEpoch } from "../../util/util";
 import WeatherImage from "../../components/WeatherImage/WeatherImage";
-import { FlexBox } from "../../components/StyledComponents/FlexBox/FlexBox";
+import { FlexBox } from "../../components/FlexBox/FlexBox";
 import styles from "./ForecastComponent.module.css";
 import PagesLoader from "../../components/Loader/PagesLoader/PagesLoader";
 

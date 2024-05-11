@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
 import { Tab, Typography, useMediaQuery } from "@mui/material";
 import Tabs from "@mui/material/Tabs";
-import { FlexBox } from "../StyledComponents/FlexBox/FlexBox";
+import { FlexBox } from "../FlexBox/FlexBox";
 import { TabType } from "../../types/types";
 
 const TabsComponent: FC<{

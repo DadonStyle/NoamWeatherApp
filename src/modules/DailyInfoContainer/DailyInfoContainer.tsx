@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Box, Theme, Typography } from "@mui/material";
-import { FlexBox } from "../../components/StyledComponents/FlexBox/FlexBox";
+import { FlexBox } from "../../components/FlexBox/FlexBox";
 import { getDateFromEpoch, getFormattedDateText } from "../../util/util";
 import styles from "./DailyInfoContainer.module.css";
 import WeatherImage from "../../components/WeatherImage/WeatherImage";

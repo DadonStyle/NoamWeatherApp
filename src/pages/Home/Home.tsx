@@ -1,6 +1,6 @@
 import { Stack, Theme, Typography } from "@mui/material";
 import { FC, useState } from "react";
-import { FlexBox } from "../../components/StyledComponents/FlexBox/FlexBox";
+import { FlexBox } from "../../components/FlexBox/FlexBox";
 import SearchBar from "../../modules/SearchBar/SearchBar";
 import useDailyDataPerCity from "../../queries/useDailyDataPerCity";
 import { CityDetailsType } from "../../types/types";

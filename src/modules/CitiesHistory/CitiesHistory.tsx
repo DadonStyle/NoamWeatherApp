@@ -1,6 +1,6 @@
 import { CityDetailsType, outletStateInterface } from "../../types/types";
 import { useOutletContext } from "react-router";
-import { FlexBox } from "../../components/StyledComponents/FlexBox/FlexBox";
+import { FlexBox } from "../../components/FlexBox/FlexBox";
 import InfoBox from "../../components/InfoBox/InfoBox";
 import { IconButton, Theme, Typography } from "@mui/material";
 import PagesLoader from "../../components/Loader/PagesLoader/PagesLoader";

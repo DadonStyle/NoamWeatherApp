@@ -1,5 +1,5 @@
 import { FC, ReactNode } from "react";
-import { FlexBox } from "../StyledComponents/FlexBox/FlexBox";
+import { FlexBox } from "../FlexBox/FlexBox";
 import styles from "./InfoBox.module.css";
 import { Theme } from "@mui/material";
 

@@ -1,6 +1,6 @@
 import { useRouteError, ErrorResponse } from "react-router";
 import { Typography } from "@mui/material";
-import { FlexBox } from "../../components/StyledComponents/FlexBox/FlexBox";
+import { FlexBox } from "../../components/FlexBox/FlexBox";
 import styles from "./ErrorPage.module.css";
 
 const ErrorPage = () => {

@@ -1,4 +1,4 @@
-import { FlexBox } from "../../components/StyledComponents/FlexBox/FlexBox";
+import { FlexBox } from "../../components/FlexBox/FlexBox";
 import InfoBox from "../../components/InfoBox/InfoBox";
 import { Theme, Typography } from "@mui/material";
 import useDailyDataPerCity from "../../queries/useDailyDataPerCity";
@@ -21,7 +21,7 @@ const AdditionalDataComponent = () => {
 
   return (
     <FlexBox className={styles.additionalDataContainer}>
-      <FlexBox className={styles.additionalDataRowContainer}> 
+      <FlexBox className={styles.additionalDataRowContainer}>
         <InfoBox
           label="Wind"
           midValue={
