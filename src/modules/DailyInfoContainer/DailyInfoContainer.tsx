@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Box, Theme, Typography } from "@mui/material";
 import { FlexBox } from "../../components/FlexBox/FlexBox";
-import { getDateFromEpoch, getFormattedDateText } from "../../util/util";
+import { getDateFromEpoch } from "../../util/util";
 import styles from "./DailyInfoContainer.module.css";
 import WeatherImage from "../../components/WeatherImage/WeatherImage";
 import PagesLoader from "../../components/Loader/PagesLoader/PagesLoader";
@@ -26,7 +26,6 @@ const DailyInfoContainer: FC<{ data: any; isLoading: boolean }> = ({
       />
       <FlexBox className={styles.dateInfoContainer}>
         <Typography>{getDateFromEpoch(data.EpochTime)}</Typography>
-        <Typography>{getFormattedDateText(data.EpochTime)}</Typography>
         <Typography>{data.IsDayTime ? "Day" : "Night"}</Typography>
       </FlexBox>
     </FlexBox>
