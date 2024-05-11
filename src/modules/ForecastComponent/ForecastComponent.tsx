@@ -11,14 +11,16 @@ import PagesLoader from "../../components/Loader/PagesLoader/PagesLoader";
 
 const ForecastComponent = () => {
   const { cityDetails }: outletStateInterface = useOutletContext();
-  const { data, isLoading } = useForecastPerCity(cityDetails?.key || "");
+  const { data, status, isError } = useForecastPerCity(cityDetails?.key || "");
 
-  if (isLoading || !data)
+  if (status === "pending")
     return (
       <FlexBox width="100%">
         <PagesLoader />
       </FlexBox>
     );
+  if (!data || isError)
+    return <Typography variant="h1">The beach is closed all week</Typography>;
 
   return (
     <FlexBox className={styles.forecastContainer}>
@@ -40,6 +42,7 @@ const ForecastComponent = () => {
                   {forecast?.Day.IconPhrase}
                 </Typography>
               }
+              className={styles.infoBoxOverride}
             />
           </FlexBox>
         ))}

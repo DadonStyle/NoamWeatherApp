@@ -7,14 +7,20 @@ interface InfoBoxProps {
   label: string;
   midValue: ReactNode;
   bottomValue?: ReactNode;
+  className?: string;
 }
 
-const InfoBox: FC<InfoBoxProps> = ({ label, midValue, bottomValue }) => {
+const InfoBox: FC<InfoBoxProps> = ({
+  label,
+  midValue,
+  bottomValue,
+  className = styles.infoBoxContainer,
+}) => {
   return (
     <FlexBox
       bgcolor={(theme: Theme) => theme.palette.common.purple}
       color={(theme: Theme) => theme.palette.common.white}
-      className={styles.infoBoxContainer}
+      className={className}
     >
       <FlexBox>{label}</FlexBox>
       <FlexBox>{midValue}</FlexBox>
