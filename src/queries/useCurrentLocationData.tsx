@@ -5,7 +5,7 @@ const useCurrentLocationData = () => {
   const { data, status } = useQuery({
     queryKey: ["currentLocation"],
     queryFn: async () => await apis.getCurrentLocationData(),
-    gcTime: 1_000 * 60, // location unlikely to be changed
+    gcTime: 1_000 * 60,
     retry: 0,
   });
 

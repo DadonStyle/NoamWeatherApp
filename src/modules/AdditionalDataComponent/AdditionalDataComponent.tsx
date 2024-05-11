@@ -92,7 +92,7 @@ const AdditionalDataComponent = () => {
           midValue={
             <FlexBox className={styles.temperatureHistoryContainer}>
               <FlexBox className={styles.additionalDataItemContainer}>
-                <NorthOutlinedIcon // represents max
+                <NorthOutlinedIcon // represents maximum
                   sx={{
                     color: (theme: Theme) => theme.palette.common.lightRed,
                   }}
@@ -106,7 +106,7 @@ const AdditionalDataComponent = () => {
                 </Typography>
               </FlexBox>
               <FlexBox className={styles.additionalDataItemContainer}>
-                <NorthOutlinedIcon // represents min
+                <NorthOutlinedIcon // represents minimum
                   sx={{
                     color: (theme: Theme) => theme.palette.common.lightGreen,
                     rotate: "180deg",

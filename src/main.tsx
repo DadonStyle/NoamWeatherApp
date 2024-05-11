@@ -16,8 +16,8 @@ const cacheTime = 1000 * 60 * 60 * 24;
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      gcTime: cacheTime, // data will be refetch by demand
-      staleTime: 1_000 * 60 * 5, // will ensure unnecessary api calls
+      gcTime: cacheTime,
+      staleTime: 1_000 * 60 * 5,
       refetchOnWindowFocus: false,
     },
   },

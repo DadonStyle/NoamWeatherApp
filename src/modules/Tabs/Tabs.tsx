@@ -18,7 +18,7 @@ const Tabs = () => {
   );
 
   const handleOnTabClick = (path: string) => () => {
-    navigate(`./${path}`, { replace: true }); // part of the function above
+    navigate(`./${path}`, { replace: true });
   };
 
   return (
