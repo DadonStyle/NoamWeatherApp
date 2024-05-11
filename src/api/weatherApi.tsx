@@ -49,9 +49,7 @@ const apis = {
         }&q=${coordsObj.coords.latitude}%2C%20%20${coordsObj.coords.longitude}`
       );
       return res.data;
-    } catch (err) {
-      // user can choose not to accept
-    }
+    } catch (err) {}
   },
   getAutoCompleteOptions: async (searchString: string) => {
     try {
