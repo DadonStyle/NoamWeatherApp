@@ -10,14 +10,17 @@ import PagesLoader from "../../components/Loader/PagesLoader/PagesLoader";
 
 const AdditionalDataComponent = () => {
   const { cityDetails }: outletStateInterface = useOutletContext();
-  const { data, isLoading } = useDailyDataPerCity(cityDetails?.key || "");
+  const { data, status, isError } = useDailyDataPerCity(cityDetails?.key || "");
 
-  if (isLoading || !data)
+  if (status === "pending")
     return (
       <FlexBox width="100%">
         <PagesLoader />
       </FlexBox>
     );
+
+  if (!data || isError)
+    return <Typography variant="h1">Nothing to see here</Typography>;
 
   return (
     <FlexBox className={styles.additionalDataContainer}>

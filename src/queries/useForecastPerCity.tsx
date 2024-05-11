@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import apis from "../api/weatherApi";
 
 const useForecastPerCity = (cityKey: string) => {
-  const { data, isError, isLoading, refetch } = useQuery({
+  const { data, status, isError } = useQuery({
     queryKey: ["forecastData", cityKey],
     queryFn: async () => await apis.getForecastPerCity(cityKey),
     retry: 0,
@@ -14,9 +14,8 @@ const useForecastPerCity = (cityKey: string) => {
 
   return {
     data: data,
-    isError,
-    isLoading,
-    refetch,
+    status,
+    isError
   };
 };
 

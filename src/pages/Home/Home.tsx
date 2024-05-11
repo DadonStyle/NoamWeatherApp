@@ -8,19 +8,21 @@ import styles from "./Home.module.css";
 import Tabs from "../../modules/Tabs/Tabs";
 import DailyInfoContainer from "../../modules/DailyInfoContainer/DailyInfoContainer";
 import { Outlet } from "react-router";
-import ErrorPage from "../ErrorPage/ErrorPage";
+import PagesLoader from "../../components/Loader/PagesLoader/PagesLoader";
 
 const Home: FC<{ defaultState: CityDetailsType }> = ({ defaultState }) => {
   const [cityDetails, setCityDetails] = useState<CityDetailsType>(defaultState);
-  const { data, isError, isLoading } = useDailyDataPerCity(cityDetails.key);
-
-  if (isError) return <ErrorPage />;
+  const { data, status } = useDailyDataPerCity(cityDetails.key);
 
   return (
     <FlexBox className={styles.appContainer}>
       <Stack className={styles.dailyInfoContainer}>
         <SearchBar updateData={setCityDetails} />
-        <DailyInfoContainer data={data} isLoading={isLoading} />
+        {status === "pending" ? (
+          <PagesLoader />
+        ) : (
+          <DailyInfoContainer data={data} />
+        )}
         <Typography variant="h2">{`${cityDetails.name}, ${cityDetails.country}`}</Typography>
       </Stack>
       <Stack

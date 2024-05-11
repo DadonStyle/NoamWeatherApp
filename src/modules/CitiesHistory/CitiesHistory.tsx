@@ -26,7 +26,7 @@ const CitiesHistory = () => {
       </FlexBox>
     );
 
-  if (!cityList) return <Typography>List is Empty!</Typography>;
+  if (!cityList) return <Typography variant="h1">List is Empty!</Typography>;
 
   return (
     <FlexBox className={styles.citiesHistoryContainer}>

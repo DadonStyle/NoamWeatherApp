@@ -4,13 +4,9 @@ import { FlexBox } from "../../components/FlexBox/FlexBox";
 import { getDateFromEpoch } from "../../util/util";
 import styles from "./DailyInfoContainer.module.css";
 import WeatherImage from "../../components/WeatherImage/WeatherImage";
-import PagesLoader from "../../components/Loader/PagesLoader/PagesLoader";
 
-const DailyInfoContainer: FC<{ data: any; isLoading: boolean }> = ({
-  data,
-  isLoading,
-}) => {
-  if (isLoading || !data) return <PagesLoader />;
+const DailyInfoContainer: FC<{ data: any }> = ({ data }) => {
+  if (!data) return <Typography variant="h1">No data</Typography>;
 
   return (
     <FlexBox className={styles.dailyInfoContainer}>
