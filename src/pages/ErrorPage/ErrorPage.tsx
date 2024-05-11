@@ -12,7 +12,7 @@ const ErrorPage = () => {
       <Typography>Sorry, the Beach is close today</Typography>
       <Typography>Api limit exceed :(</Typography>
       <Typography>Contact me to get a new api key.</Typography>
-      <Typography>{error.statusText || error.data}</Typography>
+      <Typography>{error?.statusText || error?.data}</Typography>
     </FlexBox>
   );
 };
